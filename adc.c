@@ -54,9 +54,9 @@ void initADC(uint8_t derKanal)
    ADCSRA = (1<<ADEN) | (1<<ADPS2) | (1<<ADPS1);    // Frequenzvorteiler auf 32 setzen und ADC aktivieren
    ADMUX = 0;
    ADMUX = (derKanal & 0x03);                      // Ÿbergebenen Kanal waehlen
-   ADMUX |= (1<<REFS0);
+//   ADMUX |= (1<<REFS0);
 //	REFS0 und REFS1 LO: Externe Referenzspannung
-//	ADMUX |= (1<<REFS1) | (1<<REFS0); // interne Referenzspannung nutzen 
+	ADMUX |= (1<<REFS1) | (1<<REFS0); // interne Referenzspannung nutzen 
 //	ADMUX |= (1<<REFS0); // VCC als Referenzspannung nutzen 
  
   /* nach Aktivieren des ADC wird ein "Dummy-Readout" empfohlen, man liest
@@ -75,7 +75,7 @@ uint16_t readKanal(uint8_t derKanal) //Unsere Funktion zum ADC-Channel aus lesen
                                //zufŠllige Werte haben. Sonst kann Quatsch rauskommen
    ADMUX = 0;
    ADMUX = (derKanal & 0x03);                     // Ÿbergebenen Kanal waehlen
-ADMUX |= (1<<REFS0);
+   ADMUX |= (1<<REFS0) | (1<<REFS1);
   // Eigentliche Messung - Mittelwert aus 4 aufeinanderfolgenden Wandlungen
   for(i=0;i<4;i++)
   {

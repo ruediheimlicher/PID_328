@@ -276,20 +276,6 @@ char string[4];
 lcd_puts(string);
 }
 
-void lcd_putint12(uint16_t zahl)
-{
-   char string[5];
-   int8_t i;                             // schleifenzŠhler
-   
-   string[4]='\0';                       // String Terminator
-   for(i=3; i>=0; i--)
-   {
-      string[i]=(zahl % 10) +'0';         // Modulo rechnen, dann den ASCII-Code von '0' addieren
-      zahl /= 10;
-   }
-   lcd_puts(string);
-}
-
 
 
 void lcd_putint16(uint16_t zahl)
@@ -350,6 +336,20 @@ void lcd_puts(const char *s)
     }
 
 }/* lcd_puts */
+
+void lcd_putint12(uint16_t zahl)
+{
+   char string[5];
+   int8_t i;                             // schleifenzŠhler
+   
+   string[4]='\0';                       // String Terminator
+   for(i=3; i>=0; i--)
+   {
+      string[i]=(zahl % 10) +'0';         // Modulo rechnen, dann den ASCII-Code von '0' addieren
+      zahl /= 10;
+   }
+   lcd_puts(string);
+}
 
 
 /*

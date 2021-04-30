@@ -37,9 +37,9 @@
 #define LCD_DDR                DDRB
 
 //	defines fuer Slave:
-#define LCD_RSDS_PIN            4
-#define LCD_ENABLE_PIN          3
-#define LCD_CLOCK_PIN           2
+#define LCD_RSDS_PIN            5
+#define LCD_ENABLE_PIN          6
+#define LCD_CLOCK_PIN           7
 
 //	defines fuer mySlave:
 //#define LCD_RSDS_PIN            3
@@ -112,6 +112,7 @@ void lcd_puts(const char *s);
 void lcd_putint(uint8_t zahl);
 void lcd_putint1(uint8_t zahl);
 void lcd_putint2(uint8_t zahl);
+void lcd_putint12(uint16_t zahl);
 void lcd_putint16(uint16_t zahl);
 void lcd_puthex(uint8_t zahl);
 void lcd_cls(void);
